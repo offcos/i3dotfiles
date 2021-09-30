@@ -5,21 +5,22 @@
 # The following line should contain a sharp s:
 # ß
 # If the above line is not correctly displayed, fix your editor first!
-
+#586e75
 general {
         colors = true
         interval = 5
-        color_good = "#2AA198"
-        color_bad = "#586E75"
+	color_good = "#1592ce"
+        color_bad = "#d64d4d"
         color_degraded = "#DC322F"
 }
 
-
+#order += "ipv6"
 order += "wireless _first_"
 order += "ethernet _first_"
 #order += "battery all"
 #order += "disk /"
-order += "load"
+#order += "load"
+#order += "path_exists VPN"
 order += "memory"
 order += "tztime local"
 
@@ -43,6 +44,11 @@ disk "/" {
 
 load {
         format = "%1min"
+}
+
+path_exists VPN {
+        # path exists when a VPN tunnel launched by nmcli/nm-applet is active
+        path = "/proc/sys/net/ipv4/conf/ppp0"
 }
 
 memory {
